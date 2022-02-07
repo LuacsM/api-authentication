@@ -9,7 +9,7 @@ const router = express.Router();
 
 function generateToken(params = {}){
     return jwt.sign(params, authConfig.secret, {
-        expiresIn: 1800,
+        expiresIn: 60,
     });
 }
 
@@ -52,13 +52,14 @@ router.post('/authenticate', async (req, res) =>{
 router.post('/check-token', async(req, res) =>{
     const {token} = req.body
     const SECRET_KEY = authConfig.secret
+    console.log(token)
     if(!SECRET_KEY){
         return res.status(401).json({error: 'Token inválido'})
     }
 
     try{
         if(token){
-            jwt.verify(token), SECRET_KEY
+            jwt.verify(token, SECRET_KEY)
             ? res.json({status: true})
             : res.json({status: false})
         }else{
