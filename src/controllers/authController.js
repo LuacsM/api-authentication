@@ -9,7 +9,7 @@ const router = express.Router();
 
 function generateToken(params = {}){
     return jwt.sign(params, authConfig.secret, {
-        expiresIn: 60,
+        expiresIn: 1800,
     });
 }
 
@@ -54,7 +54,7 @@ router.post('/check-token', async(req, res) =>{
     const SECRET_KEY = authConfig.secret
     console.log(token)
     if(!SECRET_KEY){
-        return res.status(401).json({error: 'Token inválido'})
+        return res.json({status: false})
     }
 
     try{
@@ -66,7 +66,7 @@ router.post('/check-token', async(req, res) =>{
             return res.json({status: false})
         }
     }catch (error){
-        return res.status(500).json({error: 'jwt.verify'})
+        return res.json({status: false})
     }
 
 })
