@@ -1,15 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const cors = require('cors')
+const cors = require('cors');
+const { response } = require('express');
+require('dotenv').config()
 
 const app = express();
 
-
+const result = process.env.APP_URL;
+console.log(result)
 const allowedOrigins = [
-    'http://127.0.0.1:5500', 
-    'http://localhost:3000',
-    'http://192.168.218.124:3000',
+    result,    
 ]
 
 //habilita CORS
@@ -32,4 +33,4 @@ require('./controllers/authController')(app);
 require('./controllers/projectController')(app);
 
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);

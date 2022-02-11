@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/noderest');
+const response = process.env.MONGO_URL;
+console.log(response)
+mongoose.connect(response);
 mongoose.Promise = global.Promise;
 
 module.exports = mongoose;
