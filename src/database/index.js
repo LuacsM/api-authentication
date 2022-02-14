@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const response = process.env.MONGO_URL;
-console.log(response)
-mongoose.connect(response);
+mongoose.connect('mongodb+srv://lucas_maia:1234@cluster0.d9pho.mongodb.net/uploadInfos?retryWrites=true&w=majority' || 'mongodb://localhost/noderest', {useNewUrlParser: true}, () => 
+    console.log("Connected to database!")
+);
+
+
 mongoose.Promise = global.Promise;
 
 module.exports = mongoose;
-
-

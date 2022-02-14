@@ -33,4 +33,4 @@ require('./controllers/authController')(app);
 require('./controllers/projectController')(app);
 
 
-app.listen(process.env.PORT || 8080);
+app.listen(8080);
