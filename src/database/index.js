@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://lucas_maia:1234@cluster0.d9pho.mongodb.net/uploadInfos?retryWrites=true&w=majority' || 'mongodb://localhost/noderest', {useNewUrlParser: true}, () => 
-    console.log("Connected to database!")
-);
+
+mongoose.connect('mongodb://localhost/noderest');
+mongoose.Promise = global.Promise;
 
 
 mongoose.Promise = global.Promise;
