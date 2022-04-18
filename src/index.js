@@ -7,10 +7,8 @@ require('dotenv').config()
 
 const app = express();
 
-const result = process.env.APP_URL;
-console.log(result)
 const allowedOrigins = [
-    result,    
+    'https://frontend-app-seduc.herokuapp.com'
 ]
 
 //habilita CORS
@@ -33,4 +31,4 @@ require('./controllers/authController')(app);
 require('./controllers/projectController')(app);
 
 
-app.listen(8080);
+app.listen(process.env.PORT);

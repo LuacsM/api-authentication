@@ -1,14 +1,13 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-
-const authConfig = require('../config/auth');
+require('dotenv/config');
 
 const User = require('../models/user');
 
 const router = express.Router();
 
 function generateToken(params = {}){
-    return jwt.sign(params, authConfig.secret, {
+    return jwt.sign(params, process.env.SECRET_KEY, {
         expiresIn: 1800,
     });
 }
@@ -51,7 +50,7 @@ router.post('/authenticate', async (req, res) =>{
 
 router.post('/check-token', async(req, res) =>{
     const {token} = req.body
-    const SECRET_KEY = authConfig.secret
+    const SECRET_KEY = process.env.SECRET_KEY
     console.log(token)
     if(!SECRET_KEY){
         return res.json({status: false})
