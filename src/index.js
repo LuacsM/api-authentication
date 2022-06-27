@@ -9,7 +9,8 @@ const app = express();
 
 const allowedOrigins = [
     'https://frontend-app-seduc.herokuapp.com',
-    'http://localhost:3000/'
+    'http://localhost:3000/',
+    'http://172.16.3.254:3000/'
 ]
 
 //habilita CORS
