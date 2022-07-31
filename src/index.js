@@ -12,7 +12,7 @@ const allowedOrigins = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'http://172.16.3.254:3000',
-    'https://dados-de-alunos.vercel.app/'
+    'https://dados-de-alunos.vercel.app'
 ]
 
 //habilita CORS
@@ -35,4 +35,6 @@ require('./controllers/authController')(app);
 require('./controllers/projectController')(app);
 
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+    console.log("http://localhost:"+process.env.PORT)
+});
